@@ -68,11 +68,7 @@ public class A2dpService extends ProfileService {
             boolean supportsOptional = false;
             for (BluetoothCodecConfig config :
                     mStateMachine.getCodecStatus().getCodecsSelectableCapabilities()) {
-                if (!(config.isMandatoryCodec())
-                        || (config.isMandatoryCodec()
-                                   && (config.getChannelMode() & config.CHANNEL_MODE_DUAL_CHANNEL)
-                                           == config.CHANNEL_MODE_DUAL_CHANNEL)) {
-                    /* SBC Dual Channel capability */
+                if (!config.isMandatoryCodec()) {
                     supportsOptional = true;
                     break;
                 }
